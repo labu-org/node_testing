@@ -3,23 +3,23 @@ const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
 
-let _data = {}
+let _data = []
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-/* app.get('/input', (req, res) => {
-    
+app.post('/input', (req, res) => {
+    console.log('Got Post Request')
+    console.log(req.body)
+    _data.push(req.body)
+    console.log('Array:')
+    _data.forEach(element => {
+        console.log(element)
+    });
 })
 
 app.get('/output', (req, res) => {
-    
-    res.send(JSON.stringify({text: "Hello from API!"}))
-}) */
-
-app.post('/input', (req, res) => {
-    console.log('Got Post Request')
-    console.log(req.body.name)
+    res.json(_data)
 })
 
 app.use('/input', express.static('public/input'))

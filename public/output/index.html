@@ -4,5 +4,34 @@
     </head>
     <body>
         <h1>Output Data</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody id="tableData">
+                <script>
+                      async function getItems() {
+                          const response = await fetch('/output')
+                          const data = await response.json()
+
+                          data.forEach(element => {
+                                let _tr = document.createElement('tr')
+                                let _td1 = document.createElement('td')
+                                let _td2 = document.createElement('td')
+                                let user = document.createTextNode(element.body.name)
+                                let password = document.createTextNode(element.body.pw)
+
+                                _tr.appendChild(_td1)
+                                _tr.appendChild(_td2)
+                                _td1.appendChild(user)
+                                _td2.appendChild(password)
+                          }); 
+                      }  
+                </script>
+            </tbody>
+        </table>
     </body>
 </html>

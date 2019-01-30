@@ -38,10 +38,11 @@
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(res => res.text())
+            }).then(res => res.json())
             .then(response => console.log('Success:', JSON.stringify(response)))
+            .then(username.value = "")
+            .then(password.value = "")
             .catch(error => console.log('Error', error))
-
         }
     </script>
 </html>
