@@ -25,7 +25,7 @@
             let password = document.getElementById('password')
 
             let data = null
-            let url = 'localhost:3000/input'
+            let url = '/input'
 
             if (username && password != null || '') {
                 data = {name: username.value, pw: password.value}
@@ -38,7 +38,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(res => res.json())
+            }).then(res => res.text())
             .then(response => console.log('Success:', JSON.stringify(response)))
             .catch(error => console.log('Error', error))
 
