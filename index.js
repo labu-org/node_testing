@@ -20,6 +20,7 @@ app.get('/output', (req, res) => {
 app.post('/input', (req, res) => {
     console.log('Got Post Request')
     console.log(req.body.name)
+    res.send(JSON.stringify({ok: true, error: null}))
 })
 
 app.use('/input', express.static('public/input'))
