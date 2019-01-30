@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Input into Database</title>
+    </head>
+    <body>
+        <h1>Input Data</h1>
+        <br>
+        <h3>Username</h3> <input type="text" id="name" size="10"><br>
+        <h3>Passwort</h3> <input type="password" id="password" size="10"><br>
+        <br>
+        <button type="button" onclick="putData()">Add to Databases</button>
+    </body>
+
+    <script>
+        /* async function getHome() {
+            const response = await fetch("/api")
+            const data = await response.json();
+            console.log(data)
+        }
+
+        getHome() */
+
+        async function putData() {
+            let username = document.getElementById('name')
+            let password = document.getElementById('password')
+
+            let data = null
+            let url = 'localhost:3000/input'
+
+            if (username && password != null || '') {
+                data = {name: username.value, pw: password.value}
+                console.log(data)
+            }
+
+            fetch(url, {
+                method: 'POST',
+                body: data, 
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.log('Error', error))
+
+        }
+    </script>
+</html>
